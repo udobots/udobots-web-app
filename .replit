@@ -30,3 +30,12 @@ outputType = "webview"
 [postMerge]
 path = "scripts/post-merge.sh"
 timeoutMs = 60000
+
+[[ports]]
+localPort = 5000
+externalPort = 80
+
+[deployment]
+deploymentTarget = "autoscale"
+run = ["npm", "start"]
+build = ["npm", "run", "build"]
