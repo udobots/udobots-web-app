@@ -157,9 +157,11 @@ export default function Home() {
               <div className={`flex flex-col ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 items-center bg-white rounded-card shadow-sm border border-gray-100 overflow-hidden`}>
                 <div className="relative w-full lg:w-1/2 h-64 lg:h-80">
                   <Image src={s.img} alt={s.title} fill className="object-cover" />
-                  <div className="absolute top-4 left-4 w-12 h-12 bg-primary-500 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-lg">{s.num}</span>
-                  </div>
+                  {s.num !== '02' && s.num !== '03' && (
+                    <div className="absolute top-4 left-4 w-12 h-12 bg-primary-500 rounded-lg flex items-center justify-center">
+                      <span className="text-white font-bold text-lg">{s.num}</span>
+                    </div>
+                  )}
                 </div>
                 <div className="p-8 lg:w-1/2">
                   <h3 className="text-2xl font-bold text-charcoal mb-3">{s.title}</h3>
