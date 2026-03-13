@@ -56,7 +56,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               },
               contactPoint: {
                 '@type': 'ContactPoint',
-                telephone: siteConfig.contact.phone,
                 contactType: 'sales',
                 email: siteConfig.contact.email,
               },
