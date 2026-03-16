@@ -50,9 +50,6 @@ export default function PlatformPage() {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <div className="p-4 bg-white">
-                  <h3 className="font-semibold text-charcoal">{item.label}</h3>
-                </div>
               </div>
             </ScrollReveal>
           ))}

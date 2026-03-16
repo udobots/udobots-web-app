@@ -87,9 +87,6 @@ export default function SafetyPage() {
                 <div className="relative h-48">
                   <Image src={item.src} alt={item.alt} fill className="object-cover" />
                 </div>
-                <div className="p-4 bg-lightgray">
-                  <h3 className="font-semibold text-charcoal text-sm">{item.label}</h3>
-                </div>
               </div>
             </ScrollReveal>
           ))}
