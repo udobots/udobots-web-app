@@ -86,10 +86,7 @@ export default function Home() {
       </Section>
 
       <section className="relative py-16 sm:py-20 overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/images/drone-closeup.jpg" alt="U Do Bots drone" fill className="object-cover" />
-          <div className="absolute inset-0 bg-charcoal/90" />
-        </div>
+        <div className="absolute inset-0 bg-charcoal" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <ScrollReveal>
@@ -157,9 +154,6 @@ export default function Home() {
               <div className={`flex flex-col ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 items-center bg-white rounded-card shadow-sm border border-gray-100 overflow-hidden`}>
                 <div className="relative w-full lg:w-1/2 h-64 lg:h-80">
                   <Image src={s.img} alt={s.title} fill className="object-cover" />
-                  <div className="absolute top-4 left-4 w-12 h-12 bg-primary-500 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-lg">{s.num}</span>
-                  </div>
                 </div>
                 <div className="p-8 lg:w-1/2">
                   <h3 className="text-2xl font-bold text-charcoal mb-3">{s.title}</h3>
@@ -196,10 +190,7 @@ export default function Home() {
       </Section>
 
       <section className="relative py-16 sm:py-20 overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/images/drone-setup.jpg" alt="Safety operations" fill className="object-cover" />
-          <div className="absolute inset-0 bg-primary-500/90" />
-        </div>
+        <div className="absolute inset-0 bg-primary-500" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="grid lg:grid-cols-2 gap-12 items-center">
