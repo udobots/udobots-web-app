@@ -185,7 +185,6 @@ export default function Home() {
                 <div className="relative h-44 overflow-hidden">
                   <Image src={ind.img} alt={ind.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <h3 className="absolute bottom-3 left-4 right-4 text-white font-bold text-lg">{ind.title}</h3>
                 </div>
                 <div className="p-4">
                   <p className="text-gray-500 text-sm">{ind.desc}</p>
