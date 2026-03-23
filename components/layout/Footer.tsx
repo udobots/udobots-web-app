@@ -130,4 +130,4 @@ export default function Footer() {
     </footer>
   );
 }
-<!-- update trigger --> 
+{/* update trigger */}
