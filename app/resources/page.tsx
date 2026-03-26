@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
-import PageHero from '@/components/layout/PageHero';
 import Section from '@/components/layout/Section';
 
 export const metadata: Metadata = {
@@ -13,7 +13,7 @@ const categories = [
     title: 'Blog',
     desc: 'Articles on drone cleaning technology, building maintenance, and industry insights.',
     href: '/resources/blog',
-    count: '2 articles',
+    count: '5 articles',
   },
   {
     title: 'FAQs',
@@ -32,10 +32,22 @@ const categories = [
 export default function ResourcesPage() {
   return (
     <>
-      <PageHero
-        title="Resources"
-        subtitle="Practical information about drone cleaning — no sales pitch, just useful knowledge."
-      />
+      <div className="relative h-[60vh] min-h-[400px] flex items-center">
+        <Image
+          src="/images/hero-resources.png"
+          alt="UDoBots drone system"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/90 via-charcoal/70 to-charcoal/40" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4">Resources</h1>
+          <p className="text-lg sm:text-xl text-gray-300 max-w-2xl">
+            Practical information about drone cleaning — no sales pitch, just useful knowledge.
+          </p>
+        </div>
+      </div>
       <Section bg="white">
         <div className="grid md:grid-cols-3 gap-8">
           {categories.map((cat) => (
