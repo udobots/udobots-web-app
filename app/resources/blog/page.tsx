@@ -10,16 +10,34 @@ export const metadata: Metadata = {
 
 const articles = [
   {
-    slug: 'soft-wash-vs-pressure-wash',
-    title: 'Soft Wash vs Pressure Wash for Facades',
-    excerpt: 'Understanding the difference between soft wash and pressure wash methods, and when to use each for building facades.',
-    date: '2025-01-15',
+    slug: 'routine-facade-maintenance-vs-restoration',
+    title: 'Why Routine Facade Maintenance Matters More Than Restoration',
+    excerpt: 'Waiting until visible damage appears is costly. A maintenance-first approach keeps buildings in better condition at lower long-term cost.',
+    date: '2026-03-25',
+  },
+  {
+    slug: 'hidden-costs-traditional-facade-cleaning',
+    title: 'Hidden Costs in Traditional Facade Cleaning',
+    excerpt: "The quoted price rarely tells the full story. Here's how permits, delays, and setup fees add up across different cleaning methods.",
+    date: '2026-03-20',
+  },
+  {
+    slug: 'comparative-analysis-exterior-cleaning-methods',
+    title: 'Comparative Analysis of Exterior Building Cleaning Methods',
+    excerpt: 'A practical comparison of scaffolding, boom lifts, rope access, and drone-based cleaning — covering safety, cost, speed, and best use cases.',
+    date: '2026-03-15',
   },
   {
     slug: 'planning-safe-drone-cleaning-job',
     title: 'How to Plan a Safe Drone Cleaning Job',
     excerpt: 'A practical guide to site assessment, safety planning, and operational preparation for drone-based cleaning operations.',
     date: '2025-02-01',
+  },
+  {
+    slug: 'soft-wash-vs-pressure-wash',
+    title: 'Soft Wash vs Pressure Wash for Facades',
+    excerpt: 'Understanding the difference between soft wash and pressure wash methods, and when to use each for building facades.',
+    date: '2025-01-15',
   },
 ];
 
