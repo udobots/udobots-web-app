@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { checkRateLimit } from '@/lib/rate-limit';
-import { getEmailAddress, siteConfig } from '@/lib/site-config';
+import { siteConfig } from '@/lib/site-config';
 import { validateContactForm } from '@/lib/validation';
 import type { ContactApiPayload } from '@/types';
 
@@ -103,8 +103,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: firstError }, { status: 400 });
   }
 
-  // Resolve destination email address via Cloudflare routing alias
-  const toAddress = getEmailAddress(recipientAlias || 'contact');
+  // Send directly to the team inbox
+  const toAddress = 'udobots@uds.in';
 
   const payload: ContactApiPayload = {
     name: name!,
