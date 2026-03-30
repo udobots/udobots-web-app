@@ -132,7 +132,7 @@ export async function POST(req: NextRequest) {
 
       // Notify the team
       await resend.emails.send({
-        from: `${siteConfig.nameDisplay} Website <noreply@udobots.com>`,
+        from: `${siteConfig.nameDisplay} Website <contact@udobots.com>`,
         to: toAddress,
         replyTo: email!,
         subject,
@@ -141,7 +141,7 @@ export async function POST(req: NextRequest) {
 
       // Auto-reply to sender
       await resend.emails.send({
-        from: `${siteConfig.nameDisplay} <noreply@udobots.com>`,
+        from: `${siteConfig.nameDisplay} <contact@udobots.com>`,
         to: email!,
         subject: `We received your message — ${siteConfig.nameDisplay}`,
         html: buildAutoReplyEmail(name!, recipientAlias || 'contact'),
