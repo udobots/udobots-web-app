@@ -165,12 +165,12 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section bg="dark">
+      <Section bg="white">
         <ScrollReveal>
           <div className="text-center mb-10">
-            <p className="text-primary-400 font-semibold text-sm uppercase tracking-wider mb-2">Watch Our Drone in Action</p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Drone-Powered Facade Cleaning in Action</h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            <p className="text-primary-500 font-semibold text-sm uppercase tracking-wider mb-2">Watch Our Drone in Action</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-charcoal mb-4">Drone-Powered Facade Cleaning in Action</h2>
+            <p className="text-gray-500 text-lg max-w-2xl mx-auto">
               See how UDoBots is transforming facade cleaning with a fully integrated drone platform.
             </p>
           </div>
