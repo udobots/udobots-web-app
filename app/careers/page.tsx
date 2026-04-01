@@ -4,8 +4,9 @@ import Link from 'next/link';
 import Section from '@/components/layout/Section';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import ContactForm from '@/components/ui/ContactForm';
-import CareersApplyModal from '@/components/ui/CareersApplyModal';
 import { siteConfig } from '@/lib/site-config';
+
+const GOOGLE_FORM_URL = 'https://forms.gle/j5iLnJ46nV8zweSUA';
 
 export const metadata: Metadata = {
   title: 'Careers',
@@ -185,7 +186,14 @@ export default function CareersPage() {
                     </div>
                     <p className="text-gray-600 text-sm">{role.desc}</p>
                   </div>
-                  <CareersApplyModal roleTitle={role.title} />
+                  <a
+                    href={GOOGLE_FORM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-shrink-0 px-4 py-2 bg-primary-500 text-white text-sm font-semibold rounded-lg hover:bg-primary-600 transition-colors text-center"
+                  >
+                    Apply
+                  </a>
                 </div>
               </div>
             </ScrollReveal>
