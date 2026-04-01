@@ -8,7 +8,13 @@ import type { ContactApiPayload } from '@/types';
 
 function buildInternalEmail(data: ContactApiPayload): string {
   const { name, company, email, phone, message, recipientAlias, interest } = data;
-  const tag = recipientAlias === 'hiring' ? 'Application' : 'Enquiry';
+  const isHiring = recipientAlias === 'hiring';
+  const tag = isHiring ? 'Application' : 'Enquiry';
+  const timestamp = new Date().toLocaleString('en-IN', {
+    timeZone: 'Asia/Kolkata',
+    dateStyle: 'full',
+    timeStyle: 'short',
+  });
 
   return `
     <!DOCTYPE html>
@@ -17,20 +23,22 @@ function buildInternalEmail(data: ContactApiPayload): string {
     <body style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:24px;color:#121212;">
       <div style="background:#FE6403;padding:16px 24px;border-radius:8px 8px 0 0;">
         <h1 style="color:white;margin:0;font-size:20px;">
-          New ${tag} — ${siteConfig.nameDisplay}
+          ${isHiring ? 'New Form Submission' : `New ${tag}`} — ${siteConfig.nameDisplay}
         </h1>
       </div>
       <div style="background:#f9f9f9;padding:24px;border-radius:0 0 8px 8px;border:1px solid #e5e5e5;">
+        ${isHiring ? '<p style="margin:0 0 16px;color:#444;">A new user has submitted the form.</p>' : ''}
+        <p style="margin:0 0 8px;font-weight:600;color:#666;">Details</p>
         <table style="width:100%;border-collapse:collapse;">
           <tr><td style="padding:8px 0;font-weight:600;width:120px;color:#666;">Name</td><td style="padding:8px 0;">${name}</td></tr>
           <tr><td style="padding:8px 0;font-weight:600;color:#666;">Email</td><td style="padding:8px 0;"><a href="mailto:${email}" style="color:#FE6403;">${email}</a></td></tr>
-          <tr><td style="padding:8px 0;font-weight:600;color:#666;">Company</td><td style="padding:8px 0;">${company || '—'}</td></tr>
-          <tr><td style="padding:8px 0;font-weight:600;color:#666;">Phone</td><td style="padding:8px 0;">${phone || '—'}</td></tr>
+          ${!isHiring ? `<tr><td style="padding:8px 0;font-weight:600;color:#666;">Company</td><td style="padding:8px 0;">${company || '—'}</td></tr>` : ''}
+          ${!isHiring ? `<tr><td style="padding:8px 0;font-weight:600;color:#666;">Phone</td><td style="padding:8px 0;">${phone || '—'}</td></tr>` : ''}
           ${interest ? `<tr><td style="padding:8px 0;font-weight:600;color:#666;">Interest</td><td style="padding:8px 0;">${interest}</td></tr>` : ''}
-          <tr><td style="padding:8px 0;font-weight:600;color:#666;">Via</td><td style="padding:8px 0;font-size:12px;color:#999;">${recipientAlias}@udobots.com</td></tr>
+          <tr><td style="padding:8px 0;font-weight:600;color:#666;">Timestamp</td><td style="padding:8px 0;font-size:13px;color:#555;">${timestamp}</td></tr>
         </table>
         <div style="margin-top:16px;padding:16px;background:white;border-radius:6px;border:1px solid #e5e5e5;">
-          <p style="margin:0 0 8px;font-weight:600;color:#666;">Message</p>
+          <p style="margin:0 0 8px;font-weight:600;color:#666;">Message / Details</p>
           <p style="margin:0;white-space:pre-wrap;">${message.replace(/</g, '&lt;')}</p>
         </div>
       </div>
@@ -51,14 +59,13 @@ function buildAutoReplyEmail(name: string, recipientAlias: string): string {
       </div>
       <div style="background:#f9f9f9;padding:24px;border-radius:0 0 8px 8px;border:1px solid #e5e5e5;">
         <p>Hi ${name},</p>
-        <p>
-          ${
-            isHiring
-              ? `Thank you for your interest in joining ${siteConfig.nameDisplay}. We've received your application and will be in touch if your profile matches our current openings.`
-              : `Thank you for reaching out to ${siteConfig.nameDisplay}. We've received your message and will get back to you within one working day.`
-          }
-        </p>
-        <p>Best regards,<br/>The ${siteConfig.nameDisplay} Team</p>
+        ${
+          isHiring
+            ? `<p>Thank you for your response. Your submission has been received successfully.</p>
+               <p>Our team will review your details and get back to you shortly.</p>`
+            : `<p>Thank you for reaching out to ${siteConfig.nameDisplay}. We've received your message and will get back to you within one working day.</p>`
+        }
+        <p>Best regards,<br/>UDoBots Team</p>
         <hr style="border:none;border-top:1px solid #e5e5e5;margin:16px 0;"/>
         <p style="font-size:12px;color:#999;">
           ${siteConfig.contact.location} •
@@ -124,26 +131,28 @@ export async function POST(req: NextRequest) {
       const { Resend } = await import('resend');
       const resend = new Resend(resendApiKey);
 
-      const tag = recipientAlias === 'hiring' ? 'Application' : 'Enquiry';
-      const subject =
-        recipientAlias === 'hiring'
-          ? `New Job Application from ${name}${company ? ` (${company})` : ''}`
-          : `New ${tag} from ${name}${company ? ` (${company})` : ''}`;
+      const isHiring = recipientAlias === 'hiring';
+      const adminSubject = isHiring
+        ? `New Form Submission - ${siteConfig.nameDisplay}`
+        : `New Enquiry from ${name}${company ? ` (${company})` : ''}`;
+      const userSubject = isHiring
+        ? `Thank You for Your Submission - ${siteConfig.nameDisplay}`
+        : `We received your message — ${siteConfig.nameDisplay}`;
 
       // Notify the team
       await resend.emails.send({
         from: `${siteConfig.nameDisplay} Website <contact@udobots.com>`,
         to: toAddress,
         replyTo: email!,
-        subject,
+        subject: adminSubject,
         html: buildInternalEmail(payload),
       });
 
-      // Auto-reply to sender
+      // Confirmation to sender
       await resend.emails.send({
         from: `${siteConfig.nameDisplay} <contact@udobots.com>`,
         to: email!,
-        subject: `We received your message — ${siteConfig.nameDisplay}`,
+        subject: userSubject,
         html: buildAutoReplyEmail(name!, recipientAlias || 'contact'),
       });
     } catch (err) {

@@ -3,9 +3,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Section from '@/components/layout/Section';
 import ScrollReveal from '@/components/ui/ScrollReveal';
+import ContactForm from '@/components/ui/ContactForm';
 import { siteConfig } from '@/lib/site-config';
 
-const applicationFormLink = "https://forms.gle/j5iLnJ46nV8zweSUA";
+const applicationFormLink = "#apply";
 export const metadata: Metadata = {
   title: 'Careers',
   description: `Join the ${siteConfig.name} team. We're building autonomous robotic systems for industrial cleaning — drone technology, intelligent automation, and real-world field robotics.`,
@@ -186,8 +187,6 @@ export default function CareersPage() {
                   </div>
                   <a
   href={applicationFormLink}
-  target="_blank"
-  rel="noopener noreferrer"
   className="flex-shrink-0 px-4 py-2 bg-primary-500 text-white text-sm font-semibold rounded-lg hover:bg-primary-600 transition-colors text-center"
 >
   Apply
@@ -227,6 +226,29 @@ export default function CareersPage() {
                 alt="Drone operations from above"
                 fill
                 className="object-cover"
+              />
+            </div>
+          </div>
+        </ScrollReveal>
+      </Section>
+
+      {/* Application Form */}
+      <Section id="apply" bg="gray">
+        <ScrollReveal>
+          <div className="max-w-2xl mx-auto">
+            <div className="text-center mb-10">
+              <p className="text-primary-500 font-semibold text-sm uppercase tracking-wider mb-2">Apply Now</p>
+              <h2 className="text-3xl font-bold text-charcoal mb-3">Send Us Your Application</h2>
+              <p className="text-gray-500">
+                Fill in your details below. Tell us about yourself, the role you&apos;re interested in, and why you want to build with us.
+              </p>
+            </div>
+            <div className="bg-white rounded-card border border-gray-100 p-8">
+              <ContactForm
+                recipientAlias="hiring"
+                submitLabel="Submit Application"
+                messagePlaceholder="Tell us about yourself, the role you're interested in, your relevant experience, and why you want to join UDoBots."
+                variant="light"
               />
             </div>
           </div>
