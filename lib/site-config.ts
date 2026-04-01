@@ -11,7 +11,7 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://udobots.com',
 
   contact: {
-    email: 'hello@udobots.com',
+    email: 'contact@udobots.com',
     // phone: '+91 44 0000 0000',
     // phoneHref: 'tel:+914400000000',
     location: ' 42, Gandhi Mandapam Rd, Chitra Nagar, Kotturpuram, Chennai, Tamil Nadu 600085',
