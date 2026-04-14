@@ -167,6 +167,29 @@ export default function Home() {
 
       <Section bg="white">
         <ScrollReveal>
+          <div className="text-center mb-10">
+            <p className="text-primary-500 font-semibold text-sm uppercase tracking-wider mb-2">Watch Our Drone in Action</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-charcoal mb-4">Drone-Powered Facade Cleaning in Action</h2>
+            <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+              See how UDoBots is transforming facade cleaning with a fully integrated drone platform.
+            </p>
+          </div>
+          <div className="max-w-4xl mx-auto">
+            <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+              <iframe
+                src="https://www.youtube.com/embed/ZNyJRKErhzk"
+                title="UDoBots Drone Cleaning in Action"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full rounded-card shadow-lg"
+              />
+            </div>
+          </div>
+        </ScrollReveal>
+      </Section>
+
+      <Section bg="white">
+        <ScrollReveal>
           <div className="text-center mb-14">
             <p className="text-primary-500 font-semibold text-sm uppercase tracking-wider mb-2">Industries We Serve</p>
             <h2 className="text-3xl sm:text-4xl font-bold text-charcoal">Built for Sites Where Traditional Cleaning Falls Short</h2>
