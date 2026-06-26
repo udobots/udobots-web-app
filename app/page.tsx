@@ -29,7 +29,7 @@ export default function Home() {
               for Industrial Buildings
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-gray-300 max-w-xl leading-relaxed">
-              Replace rope access and scaffolding with autonomous drone cleaning — safer, 5x faster, and built right here in India..
+              Replace rope access and scaffolding with autonomous drone cleaning — safer, 5x faster, and built right here in India.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <Link
